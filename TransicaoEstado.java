@@ -55,12 +55,12 @@ public class TransicaoEstado{
 		for(int i=0; i < this.bits_emissao.length(); i++){
 			
 			
-			if(percentual.nextDouble() >= this.ruido){
+			if(percentual.nextDouble() < this.ruido){
 				
-				if(this.bits_emissao.charAt(i) == '1') str_ruido = str_ruido + "0";
-				else str_ruido = str_ruido + "1";
+				if(this.bits_emissao.charAt(i) == '1') str_ruido += "0";
+				else str_ruido += "1";
 			
-			}else str_ruido = str_ruido + this.bits_emissao.charAt(i);
+			}else str_ruido += this.bits_emissao.charAt(i);
 			
 		} 
 		
@@ -110,7 +110,7 @@ public class TransicaoEstado{
     		
     }
 
-
+    //Função para pegar o próximo estado
     public ValoresDecodifica pega_proximo(ValoresDecodifica val, String subs, char bit){;
         Integer erro = 0;
         Estado s = this.estados.get(val.estado);
@@ -128,32 +128,38 @@ public class TransicaoEstado{
 		
 		String string_decod = "";
 		ValoresDecodifica val;
-        int difer;
+        int difer, menor=112345678;
+        ValoresDecodifica melhor = null;
         
 
-        System.out.printf ("\n%-10s %-40s %-10s %s\n","Estado", "Valor Decodificado", "Diferença", "Erro");
-       
-
+        System.out.println ("\n--> Resultado da Decodificação : \n");
         for(String chave : valores_decodifica.keySet()){
 
             difer = 0;
             val = valores_decodifica.get(chave);
+
             string_decod = val.bits_decodificados.substring(0, val.bits_decodificados.length()-2);
 
             for(int i = 0; i < string_decod.length(); i++){
                 
             	//Testa quantos bits são diferentes em relação os bits de entrada
                 if(entrada.charAt(i) != string_decod.charAt(i)){
-                    
                     difer += 1;
                     
                 }
-               
             }
-            System.out.printf ("%-10s %-40s %-10d %d\n", val.estado, val.bits_decodificados.substring(0, val.bits_decodificados.length()-2), difer, val.erro);
+
+           	if(difer < menor){
+            	menor = difer;
+            	melhor = val;
+            }
+
+            System.out.println ("\nEstado Final : " + val.estado + "\nDecodificação : " + val.bits_decodificados.substring(0, val.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + difer + "\nErro Obtido : " + val.erro +"\n");
            
         }
 
+        System.out.println("\nMenor diferença obtida entre a entrada original e a decodificada foi : \n");
+       	System.out.println ("\nEstado Final : " + melhor.estado + "\nDecodificação : " + melhor.bits_decodificados.substring(0, melhor.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + menor + "\nErro Obtido : " + melhor.erro +"\n"); 
         System.out.println("\n\n");
 	}
 }
