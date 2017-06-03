@@ -12,7 +12,7 @@ public class Main{
 			float ruido = Float.valueOf(args[1]);
 
 			System.out.println("\nBits de Entrada : " + entrada);
-			System.out.println("Ruído : " + ruido + "\n\n");
+			System.out.println("Ruido : " + ruido + "\n\n");
 
 			
 			TransicaoEstado te = new TransicaoEstado(entrada, ruido);
@@ -24,8 +24,10 @@ public class Main{
 			te.compara(entrada);
 		
 		}else{
-			System.out.println("\nErro: Entrada Inválida !!!\n");
-			System.out.println("Formato esperado : java Main Bits_de_Entrada Ruido\n");
+			System.out.println("\nErro: Entrada Invalida !!!\n");
+			System.out.println("Formato esperado : java Main Bits_de_Entrada* Ruido**\n\n");
+			System.out.println("* Cadeia de bits de entrada, ex: 01010111\n");
+			System.out.println("** Ruido deve pertencer ao intervalo [0, 1], ex: 0.1, 0.2 etc...\n");
 			System.exit(-1);
 		}	
 

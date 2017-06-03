@@ -44,7 +44,7 @@ public class TransicaoEstado{
 			est = estados.get(est).get_prox_estado(ent.charAt(i));		
 		}
 
-		System.out.println("-> Codificação : " + bits_emissao);
+		System.out.println("-> Codificacao : " + bits_emissao);
 	}
 
 	//Função que estabelece o ruído nos bits da emissão
@@ -66,7 +66,7 @@ public class TransicaoEstado{
 		
 		this.bits_emissao = str_ruido;
 
-		System.out.println("-> Após Ruído :  " + bits_emissao);
+		System.out.println("-> Apos Ruido :  " + bits_emissao);
 
 	}
 
@@ -132,7 +132,7 @@ public class TransicaoEstado{
         ValoresDecodifica melhor = null;
         
 
-        System.out.println ("\n--> Resultado da Decodificação : \n");
+        System.out.println ("\n--> Resultado da Decodificacao : \n");
         for(String chave : valores_decodifica.keySet()){
 
             difer = 0;
@@ -154,12 +154,12 @@ public class TransicaoEstado{
             	melhor = val;
             }
 
-            System.out.println ("\nEstado Final : " + val.estado + "\nDecodificação : " + val.bits_decodificados.substring(0, val.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + difer + "\nErro Obtido : " + val.erro +"\n");
+            System.out.println ("\nEstado Final : " + val.estado + "\nDecodificacao : " + val.bits_decodificados.substring(0, val.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + difer + "\nErro Obtido : " + val.erro +"\n");
            
         }
 
         System.out.println("\nMenor diferença obtida entre a entrada original e a decodificada foi : \n");
-       	System.out.println ("\nEstado Final : " + melhor.estado + "\nDecodificação : " + melhor.bits_decodificados.substring(0, melhor.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + menor + "\nErro Obtido : " + melhor.erro +"\n"); 
+       	System.out.println ("\nEstado Final : " + melhor.estado + "\nDecodificacao : " + melhor.bits_decodificados.substring(0, melhor.bits_decodificados.length()-2) + "\nDiferença com a Entrada Original: " + menor + "\nErro Obtido : " + melhor.erro +"\n"); 
         System.out.println("\n\n");
 	}
 }
